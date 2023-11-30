@@ -25,6 +25,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function index() {
+        if (auth()->check()) {
+            return view('welcome');
+        }
+        return redirect('/login');
+    }
+
     public function verListaVuelos() {
         $vuelos = Vuelo::paginate(20);
 
